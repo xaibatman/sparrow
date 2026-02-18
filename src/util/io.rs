@@ -34,6 +34,10 @@ pub struct MainCli {
 
     #[arg(short = 's', long, help = "Fixed seed for the random number generator")]
     pub rng_seed: Option<u64>,
+
+    /// Minimum distance between items (e.g. 5.0 for 5mm separation)
+    #[arg(short = 'd', long, help = "Minimum distance between items and other hazards")]
+    pub separation: Option<f32>,
 }
 
 #[derive(Serialize, Deserialize, Clone)]
