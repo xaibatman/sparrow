@@ -132,8 +132,9 @@ impl CoordinateDescent {
             CDAxis::Vertical => self.t_steps.1 *= m,
             CDAxis::ForwardDiag | CDAxis::BackwardDiag => {
                 //Since both axis are involved, adjust both steps but less severely
-                self.t_steps.0 *= m.sqrt();
-                self.t_steps.1 *= m.sqrt();
+                let m_sqrt = m.sqrt();
+                self.t_steps.0 *= m_sqrt;
+                self.t_steps.1 *= m_sqrt;
             }
             CDAxis::Wiggle => {
                 self.r_step *= m;

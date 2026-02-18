@@ -162,7 +162,9 @@ impl Separator {
             None => separate_multi(),
         };
 
-        debug!("[MOD] optimizers w_o's: {:?}",self.workers.iter().map(|opt| opt.ct.get_total_weighted_loss()).collect_vec());
+        if log::log_enabled!(log::Level::Debug) {
+            debug!("[MOD] optimizers w_o's: {:?}",self.workers.iter().map(|opt| opt.ct.get_total_weighted_loss()).collect_vec());
+        }
 
         // Check what run yielded the best solution (lowest collision quantification)
         let (best_sol, best_ct) = self.workers.iter_mut()
